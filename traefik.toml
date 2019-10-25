@@ -1,0 +1,14 @@
+loglevel = "ERROR"
+
+defaultEntryPoints = ["http"]
+
+[entryPoints]
+    [entryPoints.http]
+    address = ":80"
+
+[api]
+
+[docker]
+endpoint = "unix:///var/run/docker.sock"
+network = "traefikNetwork"
+exposedByDefault = false

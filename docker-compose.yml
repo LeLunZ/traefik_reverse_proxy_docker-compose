@@ -7,16 +7,19 @@ services:
       volumes:
         - /var/run/docker.sock:/var/run/docker.sock:ro
         - ./traefik.toml:/etc/traefik/traefik.toml
+        - ./acme.json:/acme.json
       networks:
         - traefikNetwork
       ports:
         - 80:80
         - 8080:8080
+        - 443:443
       expose:
         - 8080
       labels:
         - traefik.enable=true
         - traefik.frontend.rule=Host:yourUrl;PathPrefixStrip:/traefik
+        -traefik.port=8080
 
 networks:
   traefikNetwork:

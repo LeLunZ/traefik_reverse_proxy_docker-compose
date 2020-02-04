@@ -5,6 +5,26 @@ defaultEntryPoints = ["http"]
 [entryPoints]
     [entryPoints.http]
     address = ":80"
+        [entryPoints.http.redirect]
+        entryPoint = "https"
+    [entryPoints.https]
+    address = ":443"
+        [entryPoints.https.tls]
+
+
+
+[acme]
+email = "youremail"
+storage = "acme.json"
+caServer = "https://acme-v02.api.letsencrypt.org/directory"
+entryPoint = "https"
+onHostRule = true
+  [acme.httpChallenge]
+  entryPoint = "http"
+  [[acme.domains]]
+  main = "yourdomain"
+
+
 
 [api]
 

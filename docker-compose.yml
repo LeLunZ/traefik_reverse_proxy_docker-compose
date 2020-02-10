@@ -20,6 +20,7 @@ services:
         - traefik.enable=true
         - traefik.frontend.rule=Host:yourUrl;PathPrefixStrip:/traefik
         -traefik.port=8080
+      restart: always
 
 networks:
   traefikNetwork:
